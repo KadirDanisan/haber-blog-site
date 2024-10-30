@@ -2,7 +2,7 @@
 /dist
 /node_modules
 /build
-
+ //düzenleme
 # Logs
 logs
 *.log
