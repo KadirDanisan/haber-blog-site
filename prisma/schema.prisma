@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+   provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//Kullanıcı modeli
+model User {
+  id             Int      @id @default(autoincrement())
+<<<<<<< HEAD
+  userName       String   @unique
+  password       String   
+  role           String     @default("user")
+  createdAt      DateTime   @default(now())
+  deletedAt      DateTime? 
+}
+=======
+  name           String 
+  userName       String   @unique
+  hashedPassword String   
+  role           Role     @default(member)
+  createdAt      DateTime @default(now())
+  deletedAt      DateTime? 
+}
+
+enum Role {
+  member
+  moderator
+  admin
+}
+>>>>>>> b198ca12ac0658c5806ef0ae2b9f2e5220b9db9b
+
+// Kategori modeli
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  deletedAt DateTime?
+  posts     Post[]
+}
+
+// Gönderi modeli
+model Post {
+  id          Int       @id @default(autoincrement())
+  title       String
+  content     String
+  createdAt   DateTime  @default(now())
+  publishedAt DateTime?
+  deletedAt   DateTime?
+  category    Category  @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  comments    Comment[]
+  postTags    PostTag[]
+}
+
+// Yorum modeli
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  commenter String
+  createdAt DateTime @default(now())
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+}
+
+// Etiket modeli
+model Tag {
+  id      Int      @id @default(autoincrement())
+  name    String
+  postTags PostTag[]
+}
+
+// Pivot tablo modeli
+model PostTag {
+  postId Int
+  tagId  Int
+
+  post   Post @relation(fields: [postId], references: [id])
+  tag    Tag  @relation(fields: [tagId], references: [id])
+
+  @@id([postId, tagId]) // Compound ID
+}
