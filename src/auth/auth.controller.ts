@@ -9,7 +9,6 @@ export class AuthController {
     private readonly authService: AuthService,
     private readonly prisma: PrismaService,
   ) {}
-
   @Post('register')
   async register(
     @Body() body: { userName: string; password: string; role: string },

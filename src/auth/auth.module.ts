@@ -12,7 +12,7 @@ import { UserModule } from 'src/user/user.module';
     PassportModule,
     JwtModule.register({
       secret: 'SECRET_KEY',
-      signOptions: { expiresIn: 5 * 60 },
+      signOptions: { expiresIn: '5m' },
     }),
     PrismaModule,
     UserModule,

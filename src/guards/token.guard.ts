@@ -12,6 +12,7 @@ export class TokenGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
 
     const token = request.headers['x-auth-token'];
+    console.log(token);
     if (!token) {
       throw new HttpException(
         'X-Auth-Token Başlığı bulunamadı',

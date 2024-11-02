@@ -1,4 +1,4 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards, Param } from '@nestjs/common';
 import { Request } from 'express';
 import { Role } from 'src/auth/roles.enum';
 import { UnauthorizedRoleException } from 'src/exceptions/unauthorized-role.exceptions';
@@ -17,6 +17,16 @@ export class UserController {
       throw new UnauthorizedRoleException();
     }
     return this.userService.findAll();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/:id')
+  async findByid(@Req() req: Request, @Param('id') id: string) {
+    const user = req.user;
+    if (user.role !== Role.Admin) {
+      throw new UnauthorizedRoleException();
+    }
+    return this.userService.findUserById(+id);
   }
 
   @UseGuards(JwtAuthGuard)
