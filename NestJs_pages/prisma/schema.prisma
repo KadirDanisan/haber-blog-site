@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-   provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -15,35 +15,20 @@ datasource db {
 
 //Kullanıcı modeli
 model User {
-  id             Int      @id @default(autoincrement())
-<<<<<<< HEAD
-  userName       String   @unique
-  password       String   
-  role           String     @default("user")
-  createdAt      DateTime   @default(now())
-  deletedAt      DateTime? 
+  id        Int       @id @default(autoincrement())
+  userName  String    @unique
+  password  String
+  email     String    @unique
+  role      String    @default("user")
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
 }
-=======
-  name           String 
-  userName       String   @unique
-  hashedPassword String   
-  role           Role     @default(member)
-  createdAt      DateTime @default(now())
-  deletedAt      DateTime? 
-}
-
-enum Role {
-  member
-  moderator
-  admin
-}
->>>>>>> b198ca12ac0658c5806ef0ae2b9f2e5220b9db9b
 
 // Kategori modeli
 model Category {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
   deletedAt DateTime?
   posts     Post[]
 }
@@ -74,8 +59,8 @@ model Comment {
 
 // Etiket modeli
 model Tag {
-  id      Int      @id @default(autoincrement())
-  name    String
+  id       Int       @id @default(autoincrement())
+  name     String
   postTags PostTag[]
 }
 
@@ -84,8 +69,8 @@ model PostTag {
   postId Int
   tagId  Int
 
-  post   Post @relation(fields: [postId], references: [id])
-  tag    Tag  @relation(fields: [tagId], references: [id])
+  post Post @relation(fields: [postId], references: [id])
+  tag  Tag  @relation(fields: [tagId], references: [id])
 
   @@id([postId, tagId]) // Compound ID
 }

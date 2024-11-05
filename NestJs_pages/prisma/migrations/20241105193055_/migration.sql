@@ -1,24 +1,9 @@
--- CreateEnum
-CREATE TYPE "Role" AS ENUM ('member', 'moderator', 'admin');
-
--- CreateTable
-CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "userName" TEXT NOT NULL,
-    "hashedPassword" TEXT NOT NULL,
-    "role" "Role" NOT NULL DEFAULT 'member',
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "deletedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
-);
-
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "userName" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "role" TEXT NOT NULL DEFAULT 'user',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "deletedAt" TIMESTAMP(3),

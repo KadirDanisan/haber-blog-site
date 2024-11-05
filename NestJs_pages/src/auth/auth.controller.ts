@@ -9,18 +9,23 @@ export class AuthController {
     private readonly authService: AuthService,
     private readonly prisma: PrismaService,
   ) {}
+
   @Post('register')
   async register(
-    @Body() body: { userName: string; password: string; role: string },
+    @Body() body: { userName: string; email: string; password: string },
   ) {
-    const hashedpassword = await bcrypt.hash(body.password, 10);
+    const { userName, email, password } = body;
+    const role = 'user';
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = await this.prisma.user.create({
       data: {
-        userName: body.userName,
-        password: hashedpassword,
-        role: body.role,
+        email,
+        userName,
+        password: hashedPassword,
+        role,
       },
     });
+
     return user;
   }
 
