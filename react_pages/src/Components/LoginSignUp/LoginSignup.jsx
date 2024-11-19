@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import './LoginSignup.css';
 import user_icon from '../Assets/person.png';
 import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
-
 import { login, signUp } from '../BackendApi/Api';
+import '../Css/LoginSignUp.css';
 
 export const LoginSignup = () => {
     const [action, setAction] = useState('Login');
@@ -65,7 +64,8 @@ export const LoginSignup = () => {
             </div>
             {action === "Login" && (
                 <div className='forgot-password'>
-                    Lost password? <span>Click Here!</span>
+                    Lost password? Click Here!
+                    <span onClick={() => setAction('Sign Up')}> Sign Up</span>
                 </div>
             )}
             <div className='submit-container'>
@@ -74,9 +74,9 @@ export const LoginSignup = () => {
                 </button>
                 <div className='toggle-action'>
                     {action === "Login" ? (
-                        <span onClick={() => setAction('Sign Up')}>Sign Up</span>
+                        <span onClick={() => setAction('Sign Up')}></span>
                     ) : (
-                        <span onClick={() => setAction('Login')}>Login</span>
+                        <span onClick={() => setAction('Login')}></span>
                     )}
                 </div>
             </div>

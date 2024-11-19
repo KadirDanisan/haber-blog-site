@@ -4,7 +4,6 @@ import {
   Post,
   Patch,
   Delete,
-  Render,
   Param,
   Body,
 } from '@nestjs/common';
@@ -28,7 +27,6 @@ export class PostsController {
 
   // Tüm Postları Listeleme
   @Get()
-  @Render('category')
   async findAll() {
     const posts = await this.postsService.findAllPosts();
     return { posts };
@@ -36,10 +34,9 @@ export class PostsController {
 
   // Post Görüntüleme
   @Get('/:id')
-  @Render('post')
   async findOne(@Param('id') id: string) {
-    const post = await this.postsService.findPostById(id);
-    return { post };
+    const posts = await this.postsService.findPostById(id);
+    return { posts };
   }
 
   // Post Güncelleme

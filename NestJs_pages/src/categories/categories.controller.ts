@@ -4,7 +4,6 @@ import {
   Post,
   Patch,
   Delete,
-  Render,
   Param,
   Body,
 } from '@nestjs/common';
@@ -19,29 +18,23 @@ export class CategoriesController {
     return await this.categoriesService.createCategory(name);
   }
 
-  // Kategori Listeleme
-  @Render('categories')
   @Get()
   async findAll() {
     const categories = await this.categoriesService.findAllCategory();
     return { categories };
   }
 
-  // Kategori Görüntüleme
-  @Render('category')
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    const category = await this.categoriesService.findCategoryById(id);
-    return { category };
+    const categories = await this.categoriesService.findCategoryById(id);
+    return { categories };
   }
 
-  // Kategori Güncelleme
   @Patch(':id')
   async update(@Param('id') id: number, @Body('name') newName: string) {
     return await this.categoriesService.updateCategory(id, newName);
   }
 
-  // Kategori Silme
   @Delete(':id')
   async remove(@Param('id') id: number) {
     return await this.categoriesService.deleteCategory(id);

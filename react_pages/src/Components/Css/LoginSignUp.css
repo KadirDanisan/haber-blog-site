@@ -1,0 +1,102 @@
+.container {
+    background-color: #fff;
+    padding: 40px 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .underline {
+    width: 50px;
+    height: 3px;
+    background-color: #3f5efb;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  
+  /* Input alanları */
+  .input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .input img {
+    position: absolute;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .input input {
+    width: 100%;
+    padding: 12px 10px 12px 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+  }
+  
+  .input input:focus {
+    border-color: #3f5efb;
+  }
+  
+  /* Login / Sign Up butonları */
+  .submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #3f5efb;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submit:hover {
+    background-color: #6e7bff;
+  }
+  
+  .toggle-action {
+    font-size:  1rem;
+    color: #333;
+    margin-top: 20px;
+  }
+  
+  .toggle-action span {
+    color: #3f5efb;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Şifremi unuttum metni */
+  .forgot-password {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 15px;
+  }
+  
+  .forgot-password span {
+    color: #3f5efb;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
